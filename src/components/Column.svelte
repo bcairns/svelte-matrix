@@ -80,5 +80,5 @@
 </script>
 
 {#each characterStates as state, y}
-    <Character x={x} y={y} bind:state />
+    <Character {x} {y} {state} />
 {/each}
