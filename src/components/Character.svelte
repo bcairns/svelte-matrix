@@ -10,7 +10,7 @@
     export let color;
 </script>
 
-<div style="color:{color}; left:{x*width}px; top:{y*height}px; width{width}px; height:{height}px; line-height:{height}px;">
+<div style="color:{color}; left:{x*width}px; top:{y*height}px; width:{width}px; height:{height}px; line-height:{height}px;">
     {char}
 </div>
 
