@@ -16,6 +16,8 @@ I'm using this project to help me learn more about Svelte.
 
 ### Installation
 
+Requires [Node JS](https://nodejs.org/).
+
 `npm install` from project root.
 
 ### Usage
@@ -29,6 +31,10 @@ An early experiment employed CSS transitions for colour/opacity fading, but the 
 The current approach updates colours (as needed) directly every "tick" (100ms) which is very fast.  No DOM elements are created or destroyed after init.
 
 The essential algorithm is leading and trailing "cursors", and a loop to update character states in between.  (See components/Column.svelte)
+
+### Other
+
+`npm run build` for a production build.  Currently compiles to just 7198 bytes of JS! :smiling_face_with_three_hearts:
 
 ---
 
