@@ -6,7 +6,7 @@
 
 	let width = Math.floor( innerWidth / charWidth );
 	let height = Math.floor( innerHeight / charHeight );
-	let time = 0
+	let time = 0;
 
 	function tick() {
 		time++;

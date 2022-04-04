@@ -68,7 +68,7 @@
         }
     }
 
-    //
+    // executed whenever the value of time changes
     function onTimeChange(time) {
         if (!halfSpeed || time % 2 === 0) {
             tick();
@@ -80,5 +80,5 @@
 </script>
 
 {#each characterStates as state, y}
-    <Character {x} {y} {state} />
+    <Character {x} {y} char={state.char} color={state.color} />
 {/each}

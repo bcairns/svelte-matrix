@@ -4,15 +4,14 @@
 </script>
 
 <script type="ts">
-    import CharState from "../types/CharState";
-
     export let x;
     export let y;
-    export let state: CharState;
+    export let char;
+    export let color;
 </script>
 
-<div style="color:{state.color}; left:{x*width}px; top:{y*height}px; width{width}px; height:{height}px; line-height:{height}px;">
-    {state.char}
+<div style="color:{color}; left:{x*width}px; top:{y*height}px; width{width}px; height:{height}px; line-height:{height}px;">
+    {char}
 </div>
 
 <style>
