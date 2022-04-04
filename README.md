@@ -2,6 +2,8 @@
 
 A Svelte implementation of the ["Matrix digital rain"](https://en.wikipedia.org/wiki/Matrix_digital_rain) effect.
 
+![Screenshot](https://github.com/bcairns/svelte-matrix/raw/main/screenshot.png)
+
 ---
 
 I'm using this project to help me learn more about Svelte.
