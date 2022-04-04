@@ -11,16 +11,13 @@
     export let state: CharState;
 </script>
 
-<div style="color:{state.color}; left:{x*width}px; top:{y*height}px">
+<div style="color:{state.color}; left:{x*width}px; top:{y*height}px; width{width}px; height:{height}px; line-height:{height}px;">
     {state.char}
 </div>
 
 <style>
     div {
         position: absolute;
-        width: 35px;
-        height: 35px;
-        line-height: 35px;
         text-align: center;
         transform: scaleX(-1);
     }
