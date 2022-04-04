@@ -22,8 +22,6 @@
 <style>
 	:global(body) {
 		background: black;
-		font-family: monospace;
-		font-size: 24px;
 		padding: 0;
 	}
 </style>

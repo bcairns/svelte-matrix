@@ -20,5 +20,7 @@
         position: absolute;
         text-align: center;
         transform: scaleX(-1);
+        font-family: monospace;
+        font-size: 24px;
     }
 </style>
