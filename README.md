@@ -26,7 +26,7 @@ I'm using this project to help me learn more about Svelte.
 
 An early experiment employed CSS transitions for colour/opacity fading, but the sheer number of elements made this very non-performant.
 
-The current approach updates colours directly every "tick" (100ms) which is very fast.
+The current approach updates colours (as needed) directly every "tick" (100ms) which is very fast.  No DOM elements are created or destroyed after init.
 
 The essential algorithm is leading and trailing "cursors", and a loop to update character states in between.  (See components/Column.svelte)
 

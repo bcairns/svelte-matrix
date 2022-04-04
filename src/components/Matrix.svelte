@@ -15,6 +15,7 @@
 	setInterval(tick, frameDurationMS);
 </script>
 
+<!-- This is a way to do a loop when there's nothing to iterate over. Svelte will iterate anything with .length -->
 {#each {length: width} as _, x}
 	<Column {x} {height} {time} />
 {/each}
