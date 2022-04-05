@@ -1,7 +1,7 @@
 <script lang="ts">
     import Character from './Character.svelte';
-    import CharState from "../types/CharState";
 
+    // props
     export let x; // column index
     export let height; // # of characters tall
     export let time; // "clock signal" from parent, increments on each frame
@@ -10,23 +10,21 @@
     let trailLength = 30;
     let halfSpeedChance = 0.05;
     let maxStartDistance = height + trailLength; // this gives an even distribution for the start
-    let maxRespawnDistance = 10;
+    let maxRespawnDistance = 10; // get em back sooner on respawn
 
     // state
-    let characterStates:CharState[] = getNewCharacterStates(height);
     let leadingPosition;
     let trailingPosition;
     let halfSpeed = false;
 
+    // children (bound to `this` in <Children> markup below, see https://svelte.dev/tutorial/bind-this)
+    let characters = [];
+
+
     // initialize starting positions
     resetPositions(maxStartDistance);
 
-    // return array of new CharState instances: [new CharState(), new CharState(), ...]
-    function getNewCharacterStates(count):CharState[] {
-        return Array(count).fill(null, 0, count).map( () => new CharState() );
-    }
-
-    // "spawn" the position cursors, offscreen with a random offset between [0..-maxOffset]
+    // "spawn" the position cursors, offscreen with a random offset between [-1..-maxOffset]
     function resetPositions(maxOffset) {
         if (halfSpeedChance > Math.random()) {
             halfSpeed = true;
@@ -34,37 +32,27 @@
         } else {
             halfSpeed = false;
         }
-        leadingPosition = Math.floor( Math.random() * -maxOffset );
+        leadingPosition = Math.min( -1, Math.floor( Math.random() * -maxOffset ) );
         trailingPosition = leadingPosition - trailLength;
     }
 
     // draw & erase column characters, and "age" characters by calling tick() on them
-    function updateCharacterStates() {
-        // draw leading character
-        characterStates[leadingPosition]?.new();
-
-        // erase trailing character
-        characterStates[trailingPosition]?.erase();
+    function updateCharacters() {
+        characters[leadingPosition]?.draw();
+        characters[trailingPosition]?.erase();
 
         // "age" on-screen characters
         for (let i = Math.max(trailingPosition, 0); i < Math.min(leadingPosition + 1, height); i++) {
-            characterStates[i].tick();
+            characters[i].tick();
         }
-
-        // this is a key "Svelte-ism" to know: Svelte only "reacts" to variable assignments
-        // (so modifying an object as above will not trigger changes, but we can easily assign-to-self like this after)
-        characterStates = characterStates;
     }
 
-    // advance column state to next frame (update positions and character states)
+    // advance column state to next frame (update characters and positions)
     function tick() {
+        updateCharacters();
         leadingPosition++;
-        trailingPosition++;
-
-        if (trailingPosition > height) {
+        if (trailingPosition++ >= height) {
             resetPositions(maxRespawnDistance);
-        } else {
-            updateCharacterStates();
         }
     }
 
@@ -79,6 +67,6 @@
     $: onTimeChange(time);
 </script>
 
-{#each characterStates as state, y}
-    <Character {x} {y} char={state.char} color={state.color} />
+{#each {length: height} as _, y}
+    <Character {x} {y} bind:this={characters[y]} />
 {/each}
