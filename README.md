@@ -34,7 +34,7 @@ The essential algorithm is leading and trailing "cursors", and a loop to update 
 
 ### Other
 
-`npm run build` for a production build.  Currently compiles to just 7198 bytes of JS! :smiling_face_with_three_hearts:
+`npm run build` for a production build.  Currently compiles to just 7107 bytes of JS! :smiling_face_with_three_hearts:
 
 ---
 

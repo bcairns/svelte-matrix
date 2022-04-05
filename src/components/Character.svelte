@@ -51,7 +51,7 @@
     }
 </script>
 
-<div style="color:{color}; left:{x*width}px; top:{y*height}px; width:{width}px; height:{height}px; line-height:{height}px;">
+<div style="color:{color}; left:{x*width}px; top:{y*height}px;">
     {char}
 </div>
 
@@ -62,5 +62,11 @@
         transform: scaleX(-1);
         font-family: monospace;
         font-size: 24px;
+
+        /* These COULD be inline, but they're the same for every instance so we prefer a single declaration.
+        These vars are set by <Matrix>. */
+        width: var(--char-width);
+        height: var(--char-height);
+        line-height: var(--char-height);
     }
 </style>
