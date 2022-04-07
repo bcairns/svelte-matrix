@@ -61,10 +61,10 @@
         text-align: center;
         transform: scaleX(-1);
         font-family: monospace;
-        font-size: 24px;
 
         /* These COULD be inline, but they're the same for every instance so we prefer a single declaration.
         These vars are set by <Matrix>. */
+        font-size: var(--font-size);
         width: var(--char-width);
         height: var(--char-height);
         line-height: var(--char-height);
